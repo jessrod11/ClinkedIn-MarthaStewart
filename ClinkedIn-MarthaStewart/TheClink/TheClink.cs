@@ -1,5 +1,4 @@
-﻿using ClinkedIn_MarthaStewart.Models;
-using System;
+﻿using ClinkedIn_MarthaStewart.Models;using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,22 +23,19 @@ namespace ClinkedIn_MarthaStewart.Clink
                     new Service() { Name = "Hair cut", Price = 20}
                 }
             },
+
             new Inmate()
             {
-                Id = 1,
-                Name = "Stabs McGee",
-                Age = 31,
+                Id = 4,
+                Name = "Wormy",
+                Age = 46,
                 Gender = Gender.Male,
-                Crime = "stabbin'",
-                Services = new List<Service>()
+                Crime = "repeat offender of urinating in public",
+                Interests = new List<string>{ "peeing on things", "Irish dance music", "slinkys"},
+                Services = new List<Service>
                 {
-                    new Service() { Name = "prison tattoo", Price = 25 },
-                    new Service() { Name = "acupuncture", Price = 10 }
-                },
-                Interests = new List<string>()
-                {
-                    "whittling",
-                    "gift wrapping"
+                    new Service () { Name = "water bed provider", Price = 69.99},
+                    new Service () { Name = "showers of gold", Price = 0.50}
                 }
             }
         };
@@ -56,3 +52,4 @@ namespace ClinkedIn_MarthaStewart.Clink
         }
     }
 }
+

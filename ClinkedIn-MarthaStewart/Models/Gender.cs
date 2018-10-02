@@ -9,6 +9,5 @@ namespace ClinkedIn_MarthaStewart.Models
     {
         Male,
         Female,
-        male
     }
 }
