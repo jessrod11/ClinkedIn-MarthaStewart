@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ClinkedIn-MarthaStewart.Models
+namespace ClinkedIn_MarthaStewart.Models
 {
     public class Inmate
 {
-}
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public Gender Gender { get; set; }
+    public string Crime { get; set; }
+    public int Id { get; set; }
+    public List <Service> Services {get; set;} = new List<Service>();
+    public List<string> Intersts { get; set; } = new List<string>();
+    }
 }

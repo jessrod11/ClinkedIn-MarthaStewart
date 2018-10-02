@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ClinkedIn-MarthaStewart.Models
+namespace ClinkedIn_MarthaStewart.Models
 {
     public class Service
     {
