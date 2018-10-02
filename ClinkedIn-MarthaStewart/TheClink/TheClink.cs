@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ClinkedIn_MarthaStewart.TheClink
+namespace ClinkedIn_MarthaStewart.Clink
 {
     public class TheClink
     {
@@ -16,7 +16,7 @@ namespace ClinkedIn_MarthaStewart.TheClink
             _theClink.Add(inmate);
         }
 
-        internal Inmate GetById(int id)
+        public Inmate GetById(int id)
         {
             return _theClink.FirstOrDefault(inmate => inmate.Id == id);
         }
