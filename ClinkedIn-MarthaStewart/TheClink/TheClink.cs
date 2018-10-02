@@ -4,11 +4,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ClinkedIn_MarthaStewart.TheClink
+namespace ClinkedIn_MarthaStewart.Clink
 {
     public class TheClink
     {
-        static List<Inmate> _theClink = new List<Inmate>();
+        static List<Inmate> _theClink = new List<Inmate>
+        {
+
+            new Inmate()
+            {
+                Id = 0,
+                Name = "Tommy Two-Tone",
+                Age = 25,
+                Gender = Gender.Male,
+                Crime = "Grand Theft Auto",
+                Interests = new List<string>{ "cars", "boxing", "cigars", "hairgel" },
+                Services = new List<Service>{ new Service() { Name = "Foot massage", Price = 5.05}, new Service() { Name = "Hair cut", Price = 20} }
+            }
+        };
 
         internal void Add(Inmate inmate)
         {
