@@ -13,6 +13,6 @@ namespace ClinkedIn_MarthaStewart.Models
     public string Crime { get; set; }
     public int Id { get; set; }
     public List <Service> Services {get; set;} = new List<Service>();
-    public List<string> Intersts { get; set; } = new List<string>();
+    public List<string> Interests { get; set; } = new List<string>();
     }
 }
