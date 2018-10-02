@@ -18,7 +18,7 @@ namespace ClinkedIn_MarthaStewart.TheClink
 
         internal Inmate GetById(int id)
         {
-            return _theClink.First(inmate => inmate.Id == id);
+            return _theClink.FirstOrDefault(inmate => inmate.Id == id);
         }
     }
 }
