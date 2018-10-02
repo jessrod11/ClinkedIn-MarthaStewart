@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using ClinkedIn_MarthaStewart.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ClinkedIn_MarthaStewart.TheClink;
+using ClinkedIn_MarthaStewart.Clink;
 
 namespace ClinkedIn_MarthaStewart.Controllers
 {
@@ -14,11 +14,17 @@ namespace ClinkedIn_MarthaStewart.Controllers
     public class InmatesController : ControllerBase
     {
         //Methods
-        [HttpGet ("{id}/services"]
+        [HttpGet ("{id}/services")]
         public IActionResult InmateServeUs(int id)
         {
-            var clink = new TheClink.GetById(id);
-            return Inmate.service;
+            // instatiating a new class
+            var clink = new TheClink();
+
+            // setting a variable to the method in the class to get an inmate by id
+            var inmateService = clink.GetById(id);
+
+            // returning the services out of getting a partaicular inmate by id
+            return Ok(inmateService.Services);
         }
     }
 }
