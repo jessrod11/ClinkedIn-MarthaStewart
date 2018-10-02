@@ -23,6 +23,24 @@ namespace ClinkedIn_MarthaStewart.Clink
                     new Service() { Name = "Foot massage", Price = 5.05},
                     new Service() { Name = "Hair cut", Price = 20}
                 }
+            },
+            new Inmate()
+            {
+                Id = 1,
+                Name = "Stabs McGee",
+                Age = 31,
+                Gender = Gender.Male,
+                Crime = "stabbin'",
+                Services = new List<Service>()
+                {
+                    new Service() { Name = "prison tattoo", Price = 25 },
+                    new Service() { Name = "acupuncture", Price = 10 }
+                },
+                Interests = new List<string>()
+                {
+                    "whittling",
+                    "gift wrapping"
+                }
             }
         };
 
