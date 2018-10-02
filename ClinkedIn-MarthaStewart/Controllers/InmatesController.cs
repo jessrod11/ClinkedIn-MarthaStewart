@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ClinkedIn_MarthaStewart.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +14,10 @@ namespace ClinkedIn_MarthaStewart.Controllers
     {
         //Methods
         [HttpGet ("{id}/services"]
-        // other code
-        
+        public IActionResult InmateServeUs(int id)
+        {
+            var clink = new TheClink.GetById(id);
+            return Inmate.service;
+        }
     }
 }
