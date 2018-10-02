@@ -20,7 +20,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
         public ActionResult<IEnumerable<Inmate>> GetInmatesByInterest(string interest)
         {
             var clink = new TheClink();
-            var inmatesByInterest = clink.GetAllInmates().Where(inmate => inmate.Interests.Contains(interest));
+            var inmatesByInterest = clink.GetAllInmates().Where(inmate => inmate.Interests.Any(i => interest.ToLower() == i.ToLower()));
             return Ok(inmatesByInterest);
 
 
