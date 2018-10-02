@@ -14,12 +14,15 @@ namespace ClinkedIn_MarthaStewart.Clink
             new Inmate()
             {
                 Id = 0,
-                Name = "Tommy Two-Tone",
+                Name = "Nico Bellic",
                 Age = 25,
                 Gender = Gender.Male,
                 Crime = "Grand Theft Auto",
                 Interests = new List<string>{ "cars", "boxing", "cigars", "hairgel" },
-                Services = new List<Service>{ new Service() { Name = "Foot massage", Price = 5.05}, new Service() { Name = "Hair cut", Price = 20} }
+                Services = new List<Service>{
+                    new Service() { Name = "Foot massage", Price = 5.05},
+                    new Service() { Name = "Hair cut", Price = 20}
+                }
             }
         };
 
