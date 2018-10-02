@@ -8,6 +8,7 @@ namespace ClinkedIn_MarthaStewart.Models
     public enum Gender
     {
         Male,
-        Female
+        Female,
+        male
     }
 }

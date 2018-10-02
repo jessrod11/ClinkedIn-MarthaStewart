@@ -8,7 +8,11 @@ namespace ClinkedIn_MarthaStewart.Clink
 {
     public class TheClink
     {
-        static List<Inmate> _theClink = new List<Inmate>();
+        static List<Inmate> _theClink = new List<Inmate>
+        {
+            new Inmate() {Name = "", Age = "", Crime = "", Gender = "", Id = "", Interests = new List<string>}
+        };
+        
         
 
         internal void Add(Inmate inmate)
