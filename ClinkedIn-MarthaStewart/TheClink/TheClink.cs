@@ -10,10 +10,21 @@ namespace ClinkedIn_MarthaStewart.Clink
     {
         static List<Inmate> _theClink = new List<Inmate>
         {
-            new Inmate() {Name = "", Age = "", Crime = "", Gender = "", Id = "", Interests = new List<string>}
+
+            new Inmate()
+            {
+                Id = 0,
+                Name = "Nico Bellic",
+                Age = 25,
+                Gender = Gender.Male,
+                Crime = "Grand Theft Auto",
+                Interests = new List<string>{ "cars", "boxing", "cigars", "hairgel" },
+                Services = new List<Service>{
+                    new Service() { Name = "Foot massage", Price = 5.05},
+                    new Service() { Name = "Hair cut", Price = 20}
+                }
+            }
         };
-        
-        
 
         internal void Add(Inmate inmate)
         {
