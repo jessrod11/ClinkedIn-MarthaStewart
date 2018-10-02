@@ -12,7 +12,8 @@ namespace ClinkedIn_MarthaStewart.Controllers
     public class InmatesController : ControllerBase
     {
         //Methods
-
+        [HttpGet ("{id}/services"]
+        // other code
         
     }
 }
