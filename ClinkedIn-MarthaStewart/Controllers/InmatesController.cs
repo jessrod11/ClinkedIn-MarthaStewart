@@ -13,11 +13,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
     [ApiController]
     public class InmatesController : ControllerBase
     {
-        //Methods
-        [HttpGet ("{id}/services"]
-        // other code
-    
-    {     
+        
         [HttpGet("{interest}")]
         public ActionResult<IEnumerable<Inmate>> GetInmatesByInterest(string interest)
         {
@@ -39,6 +35,22 @@ namespace ClinkedIn_MarthaStewart.Controllers
             // returning the services out of getting a partaicular inmate by id
             return Ok(inmateService.Services);
 
+        }
+
+        [HttpGet("{id}/friends")]
+        public IActionResult InmatesFriends(int id)
+        {
+            var clink = new TheClink();
+            var inmatesAmigos = clink.GetById(id);
+            return Ok(inmatesAmigos.Friends);
+        }
+
+        [HttpGet("{id}/enemies")]
+        public IActionResult InmatesEnemies(int id)
+        {
+            var clink = new TheClink();
+            var inmatesEnemigos = clink.GetById(id);
+            return Ok(inmatesEnemigos.Enemies);
         }
 
     }
