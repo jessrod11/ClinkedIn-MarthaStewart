@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -46,6 +46,24 @@ namespace ClinkedIn_MarthaStewart.Controllers
 
         }
 
+
+        [HttpGet("{id}/friends")]
+        public IActionResult InmatesFriends(int id)
+        {
+            var clink = new TheClink();
+            var inmatesAmigos = clink.GetById(id);
+            return Ok(inmatesAmigos.Friends);
+        }
+
+        [HttpGet("{id}/enemies")]
+        public IActionResult InmatesEnemies(int id)
+        {
+            var clink = new TheClink();
+            var inmatesEnemigos = clink.GetById(id);
+            return Ok(inmatesEnemigos.Enemies);
+        }
+
+
         [HttpPost]
         public IActionResult AddNewInmate (Inmate newInmate)
         {
@@ -55,5 +73,6 @@ namespace ClinkedIn_MarthaStewart.Controllers
             clink.Add(newInmate);
             return Ok(newInmate.Id);
         }
+
     }
 }
