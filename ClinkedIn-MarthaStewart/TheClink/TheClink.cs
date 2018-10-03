@@ -39,7 +39,8 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Interests = new List<string>()
                 {
                     "whittling",
-                    "gift wrapping"
+                    "gift wrapping",
+                    "cars"
                 }
             }
         };

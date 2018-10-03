@@ -16,7 +16,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
         //Methods
         [HttpGet ("{id}/services"]
         // other code
-        [HttpGet("interest")]
+        [HttpGet("{interest}")]
         public ActionResult<IEnumerable<Inmate>> GetInmatesByInterest(string interest)
         {
             var clink = new TheClink();
