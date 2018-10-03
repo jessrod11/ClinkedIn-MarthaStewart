@@ -24,23 +24,7 @@ namespace ClinkedIn_MarthaStewart.Clink
                     new Service() { Name = "Hair cut", Price = 20}
                 }
             },
-<<<<<<< HEAD
 
-            new Inmate()
-            {
-                Id= 2,
-                Name = "Crazy Eyes",
-                Age = 30,
-                Gender = Gender.Female,
-                Crime = "Kidnapping",
-                Interests = new List<string> {"books", "teddy bears", "candy", "Beyonce"},
-                Services = new List<Service>
-                {
-                    new Service() {Name = "Counseling", Price = 2.25},
-                    new Service() {Name = "Singing", Price = 1.00 }
-                }
-                
-=======
             new Inmate()
             {
                 Id = 1,
@@ -59,6 +43,22 @@ namespace ClinkedIn_MarthaStewart.Clink
                     "gift wrapping"
                 }
             },
+
+            new Inmate()
+            {
+                Id= 2,
+                Name = "Crazy Eyes",
+                Age = 30,
+                Gender = Gender.Female,
+                Crime = "Kidnapping",
+                Interests = new List<string> {"books", "teddy bears", "candy", "Beyonce"},
+                Services = new List<Service>
+                {
+                    new Service() {Name = "Counseling", Price = 2.25},
+                    new Service() {Name = "Singing", Price = 1.00 }
+                }
+
+            },
              new Inmate()
             {
                 Id = 4,
@@ -72,7 +72,6 @@ namespace ClinkedIn_MarthaStewart.Clink
                     new Service () { Name = "water bed provider", Price = 69.99},
                     new Service () { Name = "showers of gold", Price = 0.50}
                 }
->>>>>>> master
             }
         };
 
