@@ -41,6 +41,20 @@ namespace ClinkedIn_MarthaStewart.Clink
                     "whittling",
                     "gift wrapping"
                 }
+            },
+             new Inmate()
+            {
+                Id = 4,
+                Name = "Wormy",
+                Age = 46,
+                Gender = Gender.Male,
+                Crime = "repeat offender of urinating in public",
+                Interests = new List<string>{ "peeing on things", "Irish dance music", "slinkys"},
+                Services = new List<Service>
+                {
+                    new Service () { Name = "water bed provider", Price = 69.99},
+                    new Service () { Name = "showers of gold", Price = 0.50}
+                }
             }
         };
 
