@@ -39,7 +39,8 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Interests = new List<string>()
                 {
                     "whittling",
-                    "gift wrapping"
+                    "gift wrapping",
+                    "cars"
                 }
             },
              new Inmate()
@@ -67,6 +68,11 @@ namespace ClinkedIn_MarthaStewart.Clink
         internal Inmate GetById(int id)
         {
             return _theClink.FirstOrDefault(inmate => inmate.Id == id);
+        }
+
+        public IEnumerable<Inmate> GetAllInmates()
+        {
+            return _theClink;
         }
     }
 }
