@@ -22,7 +22,6 @@ namespace ClinkedIn_MarthaStewart.Controllers
             return Ok(allInmates);
         }
         
-     
         [HttpGet("{interest}")]
         public ActionResult<IEnumerable<Inmate>> GetInmatesByInterest(string interest)
         {
@@ -46,5 +45,14 @@ namespace ClinkedIn_MarthaStewart.Controllers
 
         }
 
+        [HttpPost]
+        public IActionResult AddNewInmate (Inmate newInmate)
+        {
+            var clink = new TheClink();
+            var inmateList = clink.GetAllInmates();
+            newInmate.Id = inmateList.Any() ? inmateList.Max(thisGuy => thisGuy.Id) + 1 : 1;
+            clink.Add(newInmate);
+            return Ok(newInmate.Id);
+        }
     }
 }
