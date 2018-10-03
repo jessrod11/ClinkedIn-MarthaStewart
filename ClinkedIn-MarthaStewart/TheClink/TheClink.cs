@@ -104,7 +104,6 @@ namespace ClinkedIn_MarthaStewart.Clink
 
         internal void Add(Inmate inmate)
         {
-            inmate.Id = _theClink.Any() ? _theClink.Max(thisGuy => thisGuy.Id) + 1 : 1;
             _theClink.Add(inmate);
         }
 
