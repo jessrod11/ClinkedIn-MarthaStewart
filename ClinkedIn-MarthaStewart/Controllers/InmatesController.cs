@@ -12,6 +12,11 @@ namespace ClinkedIn_MarthaStewart.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class InmatesController : ControllerBase
+    {
+        //Methods
+        [HttpGet ("{id}/services"]
+        // other code
+    
     {     
         [HttpGet("{interest}")]
         public ActionResult<IEnumerable<Inmate>> GetInmatesByInterest(string interest)
