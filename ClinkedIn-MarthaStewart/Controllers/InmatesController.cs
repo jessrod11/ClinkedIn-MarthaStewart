@@ -14,10 +14,15 @@ namespace ClinkedIn_MarthaStewart.Controllers
     public class InmatesController : ControllerBase
     {
         //Methods
-        [HttpGet ("{id}/services"]
-        // other code
-    
-    {     
+        [HttpGet ("")]
+         public ActionResult<IEnumerable<Inmate>> GetAll()
+        {
+            var clink = new TheClink();
+            var allInmates = clink.GetAllInmates();
+            return Ok(allInmates);
+        }
+        
+     
         [HttpGet("{interest}")]
         public ActionResult<IEnumerable<Inmate>> GetInmatesByInterest(string interest)
         {
