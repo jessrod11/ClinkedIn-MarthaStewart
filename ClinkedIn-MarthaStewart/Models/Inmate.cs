@@ -14,5 +14,7 @@ namespace ClinkedIn_MarthaStewart.Models
         public int Id { get; set; }
         public List <Service> Services {get; set;} = new List<Service>();
         public List<string> Interests { get; set; } = new List<string>();
+        public List<Inmate> Friends { get; set; } = new List<Inmate>();
+        public List<Inmate> Enemies { get; set; } = new List<Inmate>();
     }
 }
