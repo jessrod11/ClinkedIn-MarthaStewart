@@ -14,13 +14,8 @@ namespace ClinkedIn_MarthaStewart.Controllers
         //Methods
         [HttpGet ("{id}/services"]
         // other code
-
-        //Methods
-        [HttpGet]
-        public ActionResult<IEnumerable<InmatesController>> GetAll()
-        {
-            return Inmate;
-        }
+    
+ 
 
     }
 }
