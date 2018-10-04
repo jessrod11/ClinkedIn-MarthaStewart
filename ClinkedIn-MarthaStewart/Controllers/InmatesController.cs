@@ -46,7 +46,6 @@ namespace ClinkedIn_MarthaStewart.Controllers
 
         }
 
-
         [HttpGet("{id}/friends")]
         public IActionResult InmatesFriends(int id)
         {

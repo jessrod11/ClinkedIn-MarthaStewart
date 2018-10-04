@@ -26,6 +26,34 @@ namespace ClinkedIn_MarthaStewart.Clink
                     new Service() { Name = "Hair cut", Price = 20}
                 }
             };
+            var pablo = new Inmate()
+            {
+                Id = 23,
+                Name = "Pablo Escobar",
+                Age = 37,
+                Gender = Gender.Male,
+                ReleaseDate = new DateTime(2019, 2, 15),
+                Crime = "Drug Smuggling",
+                Interests = new List<string> { "cars", "drugs", "cigars", "dancing" },
+                Services = new List<Service>{
+                    new Service() { Name = "Foot massage", Price = 5.05},
+                    new Service() { Name = "Hair cut", Price = 20}
+                }
+            };
+            var scarface = new Inmate()
+            {
+                Id = 54,
+                Name = "Tony \"Scarface\" Montana",
+                Age = 40,
+                Gender = Gender.Male,
+                ReleaseDate = new DateTime(2019, 2, 15),
+                Crime = "Organized Crime",
+                Interests = new List<string> { "cars", "cocaine", "nightclubbing", "hairgel" },
+                Services = new List<Service>{
+                    new Service() { Name = "Foot massage", Price = 5.05},
+                    new Service() { Name = "Hair cut", Price = 20}
+                }
+            };
 
             var stabs = new Inmate()
             {
@@ -84,17 +112,25 @@ namespace ClinkedIn_MarthaStewart.Clink
 
             nico.Friends.Add(stabs);
             nico.Friends.Add(wormy);
+            nico.Friends.Add(pablo);
             nico.Enemies.Add(crazyEyes);
+            nico.Enemies.Add(scarface);
 
             stabs.Friends.Add(nico);
+            stabs.Friends.Add(scarface);
+            stabs.Enemies.Add(pablo);
             stabs.Enemies.Add(crazyEyes);
             stabs.Enemies.Add(wormy);
 
             crazyEyes.Enemies.Add(nico);
             crazyEyes.Enemies.Add(wormy);
             crazyEyes.Enemies.Add(stabs);
+            crazyEyes.Friends.Add(pablo);
+            crazyEyes.Friends.Add(scarface);
 
             wormy.Friends.Add(nico);
+            wormy.Friends.Add(pablo);
+            wormy.Enemies.Add(scarface);
             wormy.Enemies.Add(stabs);
             wormy.Enemies.Add(crazyEyes);
 
@@ -102,6 +138,8 @@ namespace ClinkedIn_MarthaStewart.Clink
             _theClink.Add(stabs);
             _theClink.Add(crazyEyes);
             _theClink.Add(wormy);
+            _theClink.Add(scarface);
+            _theClink.Add(pablo);
 
         }
 
