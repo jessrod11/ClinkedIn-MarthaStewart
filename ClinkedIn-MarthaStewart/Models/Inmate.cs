@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinkedIn_MarthaStewart.Clink;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,10 +17,5 @@ namespace ClinkedIn_MarthaStewart.Models
         public List<string> Interests { get; set; } = new List<string>();
         public List<Inmate> Friends { get; set; } = new List<Inmate>();
         public List<Inmate> Enemies { get; set; } = new List<Inmate>();
-
-        internal void Add(Service service)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
