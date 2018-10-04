@@ -15,7 +15,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
     public class InmatesController : ControllerBase
     {
         //Methods
-        [HttpGet("")]
+        [HttpGet]
          public ActionResult<IEnumerable<Inmate>> GetAll()
         {
             var clink = new TheClink();
