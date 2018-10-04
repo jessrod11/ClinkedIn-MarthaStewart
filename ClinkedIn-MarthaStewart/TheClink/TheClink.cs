@@ -18,8 +18,37 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Name = "Nico Bellic",
                 Age = 25,
                 Gender = Gender.Male,
+                ReleaseDate = new DateTime(2020, 11, 6),
                 Crime = "Grand Theft Auto",
                 Interests = new List<string> { "cars", "boxing", "cigars", "hairgel", "books" },
+                Services = new List<Service>{
+                    new Service() { Name = "Foot massage", Price = 5.05},
+                    new Service() { Name = "Hair cut", Price = 20}
+                }
+            };
+            var pablo = new Inmate()
+            {
+                Id = 23,
+                Name = "Pablo Escobar",
+                Age = 37,
+                Gender = Gender.Male,
+                ReleaseDate = new DateTime(2019, 2, 15),
+                Crime = "Drug Smuggling",
+                Interests = new List<string> { "cars", "drugs", "cigars", "dancing" },
+                Services = new List<Service>{
+                    new Service() { Name = "Foot massage", Price = 5.05},
+                    new Service() { Name = "Hair cut", Price = 20}
+                }
+            };
+            var scarface = new Inmate()
+            {
+                Id = 54,
+                Name = "Tony \"Scarface\" Montana",
+                Age = 40,
+                Gender = Gender.Male,
+                ReleaseDate = new DateTime(2019, 2, 15),
+                Crime = "Organized Crime",
+                Interests = new List<string> { "cars", "cocaine", "nightclubbing", "hairgel" },
                 Services = new List<Service>{
                     new Service() { Name = "Foot massage", Price = 5.05},
                     new Service() { Name = "Hair cut", Price = 20}
@@ -32,6 +61,7 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Name = "Stabs McGee",
                 Age = 31,
                 Gender = Gender.Male,
+                ReleaseDate = new DateTime(2020, 11, 6),
                 Crime = "stabbin'",
                 Services = new List<Service>()
                 {
@@ -52,6 +82,7 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Name = "Crazy Eyes",
                 Age = 30,
                 Gender = Gender.Female,
+                ReleaseDate = new DateTime(2020, 11, 6),
                 Crime = "Kidnapping",
                 Interests = new List<string> { "books", "teddy bears", "candy", "Beyonce" },
                 Services = new List<Service>
@@ -68,6 +99,7 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Name = "Wormy",
                 Age = 46,
                 Gender = Gender.Male,
+                ReleaseDate = new DateTime(2020, 11, 6),
                 Crime = "repeat offender of urinating in public",
                 Interests = new List<string> { "peeing on things", "Irish dance music", "slinkys" },
                 Services = new List<Service>
@@ -80,17 +112,25 @@ namespace ClinkedIn_MarthaStewart.Clink
 
             nico.Friends.Add(stabs);
             nico.Friends.Add(wormy);
+            nico.Friends.Add(pablo);
             nico.Enemies.Add(crazyEyes);
+            nico.Enemies.Add(scarface);
 
             stabs.Friends.Add(nico);
+            stabs.Friends.Add(scarface);
+            stabs.Enemies.Add(pablo);
             stabs.Enemies.Add(crazyEyes);
             stabs.Enemies.Add(wormy);
 
             crazyEyes.Enemies.Add(nico);
             crazyEyes.Enemies.Add(wormy);
             crazyEyes.Enemies.Add(stabs);
+            crazyEyes.Friends.Add(pablo);
+            crazyEyes.Friends.Add(scarface);
 
             wormy.Friends.Add(nico);
+            wormy.Friends.Add(pablo);
+            wormy.Enemies.Add(scarface);
             wormy.Enemies.Add(stabs);
             wormy.Enemies.Add(crazyEyes);
 
@@ -98,6 +138,8 @@ namespace ClinkedIn_MarthaStewart.Clink
             _theClink.Add(stabs);
             _theClink.Add(crazyEyes);
             _theClink.Add(wormy);
+            _theClink.Add(scarface);
+            _theClink.Add(pablo);
 
         }
 

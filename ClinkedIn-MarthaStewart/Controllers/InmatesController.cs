@@ -58,14 +58,29 @@ namespace ClinkedIn_MarthaStewart.Controllers
             return Ok(inmateToAddServiceTo.Services);
         }
 
-
-
         [HttpGet("{id}/friends")]
         public IActionResult InmatesFriends(int id)
         {
             var clink = new TheClink();
             var inmatesAmigos = clink.GetById(id);
             return Ok(inmatesAmigos.Friends);
+        }
+
+        [HttpGet("{id}/suggested")]
+        public IActionResult FriendsOfFriends (int id)
+        {
+            var clink = new TheClink();
+            var self = clink.GetAllInmates().FirstOrDefault(inmate => inmate.Id == id);
+            if (self == null)
+            {
+                return NotFound();
+            }
+            var suggestions = self
+                .Friends
+                .SelectMany(friend => friend.Friends)
+                .Where(inmate => inmate != self && !self.Friends.Contains(inmate))
+                .ToHashSet();
+            return Ok(suggestions);
         }
 
         [HttpGet("{id}/enemies")]
