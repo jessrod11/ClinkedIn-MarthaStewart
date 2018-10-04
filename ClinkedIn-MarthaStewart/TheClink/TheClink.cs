@@ -28,10 +28,11 @@ namespace ClinkedIn_MarthaStewart.Clink
             };
             var pablo = new Inmate()
             {
-                Id = 0,
+                Id = 23,
                 Name = "Pablo Escobar",
                 Age = 37,
                 Gender = Gender.Male,
+                ReleaseDate = new DateTime(2019, 2, 15),
                 Crime = "Drug Smuggling",
                 Interests = new List<string> { "cars", "drugs", "cigars", "dancing" },
                 Services = new List<Service>{
@@ -41,10 +42,11 @@ namespace ClinkedIn_MarthaStewart.Clink
             };
             var scarface = new Inmate()
             {
-                Id = 0,
+                Id = 54,
                 Name = "Tony \"Scarface\" Montana",
                 Age = 40,
                 Gender = Gender.Male,
+                ReleaseDate = new DateTime(2019, 2, 15),
                 Crime = "Organized Crime",
                 Interests = new List<string> { "cars", "cocaine", "nightclubbing", "hairgel" },
                 Services = new List<Service>{
@@ -136,6 +138,8 @@ namespace ClinkedIn_MarthaStewart.Clink
             _theClink.Add(stabs);
             _theClink.Add(crazyEyes);
             _theClink.Add(wormy);
+            _theClink.Add(scarface);
+            _theClink.Add(pablo);
 
         }
 
