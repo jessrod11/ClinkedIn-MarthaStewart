@@ -50,7 +50,16 @@ namespace ClinkedIn_MarthaStewart.Controllers
         public ActionResult<IEnumerable<Inmate>> GetFriendsOfFriends(int id)
         {
             var clink = new TheClink();
-            var friendsOfFriends = clink.GetById(id).Friends.SelectMany(inmate => inmate.Friends);
+            var friendsOfFriends = new List<Inmate>();
+            var inmateFriends = clink.GetById(id).Friends;
+            foreach (var inmate in inmateFriends)
+            {
+                while (inmate.Friends.Count > 0)
+                {
+                    friendsOfFriends.Add(inmate.Friends[0]);
+                    inmate.Friends.Remove(inmate.Friends[0]);
+                }
+            }
             return Ok(friendsOfFriends);
         }
         [HttpGet("{id}/friends")]
