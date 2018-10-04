@@ -16,5 +16,10 @@ namespace ClinkedIn_MarthaStewart.Models
         public List<string> Interests { get; set; } = new List<string>();
         public List<Inmate> Friends { get; set; } = new List<Inmate>();
         public List<Inmate> Enemies { get; set; } = new List<Inmate>();
+
+        internal void Add(Service service)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
