@@ -18,6 +18,7 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Name = "Nico Bellic",
                 Age = 25,
                 Gender = Gender.Male,
+                ReleaseDate = new DateTime(2020, 11, 6),
                 Crime = "Grand Theft Auto",
                 Interests = new List<string> { "cars", "boxing", "cigars", "hairgel", "books" },
                 Services = new List<Service>{
@@ -58,6 +59,7 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Name = "Stabs McGee",
                 Age = 31,
                 Gender = Gender.Male,
+                ReleaseDate = new DateTime(2020, 11, 6),
                 Crime = "stabbin'",
                 Services = new List<Service>()
                 {
@@ -78,6 +80,7 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Name = "Crazy Eyes",
                 Age = 30,
                 Gender = Gender.Female,
+                ReleaseDate = new DateTime(2020, 11, 6),
                 Crime = "Kidnapping",
                 Interests = new List<string> { "books", "teddy bears", "candy", "Beyonce" },
                 Services = new List<Service>
@@ -94,6 +97,7 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Name = "Wormy",
                 Age = 46,
                 Gender = Gender.Male,
+                ReleaseDate = new DateTime(2020, 11, 6),
                 Crime = "repeat offender of urinating in public",
                 Interests = new List<string> { "peeing on things", "Irish dance music", "slinkys" },
                 Services = new List<Service>
