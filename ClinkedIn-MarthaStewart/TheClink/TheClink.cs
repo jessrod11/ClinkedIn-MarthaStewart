@@ -18,6 +18,7 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Name = "Nico Bellic",
                 Age = 25,
                 Gender = Gender.Male,
+                ReleaseDate = 9/11/2050,
                 Crime = "Grand Theft Auto",
                 Interests = new List<string> { "cars", "boxing", "cigars", "hairgel", "books" },
                 Services = new List<Service>{
