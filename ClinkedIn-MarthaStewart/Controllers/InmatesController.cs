@@ -66,7 +66,9 @@ namespace ClinkedIn_MarthaStewart.Controllers
 
             if (inmateToHaveServiceDeleted == null) return NotFound();
 
-            inmateToHaveServiceDeleted.Services.Remove(service);
+            var serviceToBeRemoved = inmateToHaveServiceDeleted.Services.Find(s => s.Name == service.Name);
+           
+            inmateToHaveServiceDeleted.Services.Remove(serviceToBeRemoved);
             return Ok(inmateToHaveServiceDeleted.Services);
         }
 
