@@ -43,9 +43,34 @@ namespace ClinkedIn_MarthaStewart.Controllers
 
             // returning the services out of getting a partaicular inmate by id
             return Ok(inmateService.Services);
-
         }
 
+        [HttpPut("{id}/newservice")]
+        public IActionResult AddNewService(int id, Service service)
+        {
+
+            var clink = new TheClink();
+            var inmateToAddServiceTo = clink.GetById(id);
+
+            if (inmateToAddServiceTo == null) return NotFound();
+
+            inmateToAddServiceTo.Services.Add(service);
+            return Ok(inmateToAddServiceTo.Services);
+        }
+
+        [HttpDelete("{id}/deleteservice")]
+        public IActionResult DeleteService(int id, Service service)
+        {
+            var clink = new TheClink();
+            var inmateToHaveServiceDeleted = clink.GetById(id);
+
+            if (inmateToHaveServiceDeleted == null) return NotFound();
+
+            var serviceToBeRemoved = inmateToHaveServiceDeleted.Services.Find(s => s.Name == service.Name);
+           
+            inmateToHaveServiceDeleted.Services.Remove(serviceToBeRemoved);
+            return Ok(inmateToHaveServiceDeleted.Services);
+        }
 
         [HttpGet("{id}/friends")]
         public IActionResult InmatesFriends(int id)
