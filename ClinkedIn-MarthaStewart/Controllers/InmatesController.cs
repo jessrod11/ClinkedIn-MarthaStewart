@@ -16,13 +16,13 @@ namespace ClinkedIn_MarthaStewart.Controllers
     {
         //Methods
         [HttpGet]
-         public ActionResult<IEnumerable<Inmate>> GetAll()
+        public ActionResult<IEnumerable<Inmate>> GetAll()
         {
             var clink = new TheClink();
             var allInmates = clink.GetAllInmates();
             return Ok(allInmates);
         }
-        
+
         [HttpGet("{interest}")]
         public ActionResult<IEnumerable<Inmate>> GetInmatesByInterest(string interest)
         {
@@ -31,7 +31,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
             return Ok(inmatesByInterest);
         }
 
-        
+
         [HttpGet("{id}/services")]
         public IActionResult InmateServeUs(int id)
         {
@@ -56,6 +56,20 @@ namespace ClinkedIn_MarthaStewart.Controllers
 
             inmateToAddServiceTo.Services.Add(service);
             return Ok(inmateToAddServiceTo.Services);
+        }
+
+        [HttpDelete("{id}/deleteservice")]
+        public IActionResult DeleteService(int id, Service service)
+        {
+            var clink = new TheClink();
+            var inmateToHaveServiceDeleted = clink.GetById(id);
+
+            if (inmateToHaveServiceDeleted == null) return NotFound();
+
+            var serviceToBeRemoved = inmateToHaveServiceDeleted.Services.Find(s => s.Name == service.Name);
+           
+            inmateToHaveServiceDeleted.Services.Remove(serviceToBeRemoved);
+            return Ok(inmateToHaveServiceDeleted.Services);
         }
 
         [HttpGet("{id}/friends")]
