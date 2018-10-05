@@ -136,7 +136,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
             var inmateList = clink.GetAllInmates();
             newInmate.Id = inmateList.Any() ? inmateList.Max(thisGuy => thisGuy.Id) + 1 : 1;
             clink.Add(newInmate);
-            return Ok(newInmate.Id);
+            return Ok(new { newInmate.Id });
         }
 
         [HttpGet("{id}/sentence")]
@@ -149,6 +149,31 @@ namespace ClinkedIn_MarthaStewart.Controllers
             return Ok(Days);
         }
 
+        [HttpPost("services/transactions")]
+        public IActionResult ServiceTransaction(Transaction details)
+        {
+            var clink = new TheClink();
+            var buyer = clink.GetById(details.Buyer);
+
+            var seller = clink.GetById(details.Seller);
+            if (buyer == null) return NotFound($"No inmate with ID {details.Buyer}");
+            if (seller == null) return NotFound($"No inmate with ID {details.Seller}");
+
+            var serviceRequested = seller.Services.FirstOrDefault(service => service.Name.ToLower().Contains(details.RequestedService.ToLower()));
+            if (serviceRequested == null) return NotFound($"Inmate {details.Seller} has no service named {details.RequestedService}");
+
+            if (buyer.Funds >= serviceRequested.Price)
+            {
+                buyer.Funds -= serviceRequested.Price;
+                seller.Funds += serviceRequested.Price;
+                return Ok(new { buyer.Funds });
+            }
+            else
+            {
+                return BadRequest("Buyer cannot afford this service.");
+            }
+
+        }
     }
 
     }

@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace ClinkedIn_MarthaStewart.Models
 {
-    public class Service
+    public class Transaction
     {
-        public string Name { get; set; }
-        public decimal Price { get; set; }
+        public int Buyer;
+        public int Seller;
+        public string RequestedService;
     }
 }

@@ -22,9 +22,10 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Crime = "Grand Theft Auto",
                 Interests = new List<string> { "cars", "boxing", "cigars", "hairgel", "books" },
                 Services = new List<Service>{
-                    new Service() { Name = "Foot massage", Price = 5.05},
-                    new Service() { Name = "Hair cut", Price = 20}
-                }
+                    new Service() { Name = "Foot massage", Price = 5.05m},
+                    new Service() { Name = "Hair cut", Price = 20m}
+                },
+                Funds = 38.25m
             };
             var pablo = new Inmate()
             {
@@ -36,9 +37,10 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Crime = "Drug Smuggling",
                 Interests = new List<string> { "cars", "drugs", "cigars", "dancing" },
                 Services = new List<Service>{
-                    new Service() { Name = "Foot massage", Price = 5.05},
-                    new Service() { Name = "Hair cut", Price = 20}
-                }
+                    new Service() { Name = "Foot massage", Price = 5.05m},
+                    new Service() { Name = "Hair cut", Price = 20m}
+                },
+                Funds = 247.10m
             };
             var scarface = new Inmate()
             {
@@ -50,9 +52,10 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Crime = "Organized Crime",
                 Interests = new List<string> { "cars", "cocaine", "nightclubbing", "hairgel" },
                 Services = new List<Service>{
-                    new Service() { Name = "Foot massage", Price = 5.05},
-                    new Service() { Name = "Hair cut", Price = 20}
-                }
+                    new Service() { Name = "Foot massage", Price = 5.05m},
+                    new Service() { Name = "Hair cut", Price = 20m}
+                },
+                Funds = 103m
             };
 
             var stabs = new Inmate()
@@ -65,15 +68,16 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Crime = "stabbin'",
                 Services = new List<Service>()
                 {
-                    new Service() { Name = "prison tattoo", Price = 25 },
-                    new Service() { Name = "acupuncture", Price = 10 }
+                    new Service() { Name = "prison tattoo", Price = 25m },
+                    new Service() { Name = "acupuncture", Price = 10m }
                 },
                 Interests = new List<string>()
                 {
                     "whittling",
                     "gift wrapping",
                     "cars"
-                }
+                },
+                Funds = 0m
             };
 
             var crazyEyes = new Inmate()
@@ -87,10 +91,10 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Interests = new List<string> { "books", "teddy bears", "candy", "Beyonce" },
                 Services = new List<Service>
                 {
-                    new Service() {Name = "Counseling", Price = 2.25},
-                    new Service() {Name = "Singing", Price = 1.00 }
-                }
-
+                    new Service() {Name = "Counseling", Price = 2.25m},
+                    new Service() {Name = "Singing", Price = 1.00m }
+                },
+                Funds = 83.77m
             };
 
             var wormy = new Inmate()
@@ -104,9 +108,10 @@ namespace ClinkedIn_MarthaStewart.Clink
                 Interests = new List<string> { "peeing on things", "Irish dance music", "slinkys" },
                 Services = new List<Service>
                 {
-                    new Service () { Name = "water bed provider", Price = 69.99},
-                    new Service () { Name = "showers of gold", Price = 0.50}
-                }
+                    new Service () { Name = "water bed provider", Price = 69.99m},
+                    new Service () { Name = "showers of gold", Price = 0.50m}
+                },
+                Funds = 90.45m
             };
 
 
@@ -134,12 +139,7 @@ namespace ClinkedIn_MarthaStewart.Clink
             wormy.Enemies.Add(stabs);
             wormy.Enemies.Add(crazyEyes);
 
-            _theClink.Add(nico);
-            _theClink.Add(stabs);
-            _theClink.Add(crazyEyes);
-            _theClink.Add(wormy);
-            _theClink.Add(scarface);
-            _theClink.Add(pablo);
+            _theClink.AddRange(new List<Inmate> { nico, stabs, crazyEyes, wormy, scarface, pablo });
 
         }
 
