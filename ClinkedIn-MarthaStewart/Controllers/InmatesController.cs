@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using ClinkedIn_MarthaStewart.Clink;
 using ClinkedIn_MarthaStewart.Models;
@@ -162,7 +163,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
             if (seller == null) return NotFound($"No inmate with ID {details.Seller}");
 
             var serviceRequested = seller.Services.FirstOrDefault(service => service.Name.ToLower().Contains(details.RequestedService.ToLower()));
-            if (serviceRequested == null) return NotFound($"Inmate {details.Seller} has no service named {details.RequestedService}");
+            if (serviceRequested == null) return NotFound($"Inmate {details.Seller} has no service matching \"{details.RequestedService}\"");
 
             if (buyer.Funds >= serviceRequested.Price)
             {
@@ -172,7 +173,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
             }
             else
             {
-                return Ok("Buyer cannot afford this service.  No transaction performed.");
+                return StatusCode(403, "Buyer cannot afford this service.  No transaction performed.");
             }
         }
     }
