@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ClinkedIn_MarthaStewart.Models
 {
-    public class Transaction
+    public struct Transaction
     {
         public int Buyer;
         public int Seller;
