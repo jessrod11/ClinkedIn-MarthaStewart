@@ -72,6 +72,30 @@ namespace ClinkedIn_MarthaStewart.Controllers
             return Ok(inmateToHaveServiceDeleted.Services);
         }
 
+        [HttpPut("{id}/newinterest/{interest}")]
+        public IActionResult AddNewInterest(int id, string interest)
+        {
+            var clink = new TheClink();
+            var inmateWithInterests = clink.GetById(id);
+
+            if (inmateWithInterests == null) return NotFound();
+
+            inmateWithInterests.Interests.Add(interest);
+            return Ok(inmateWithInterests.Interests);
+        }
+
+        [HttpDelete("{id}/newinterest/{interest}")]
+        public IActionResult DeleteInterest(int id, string interest)
+        {
+            var clink = new TheClink();
+            var inmateWithLostInterests = clink.GetById(id);
+
+            if (inmateWithLostInterests == null) return NotFound();
+
+            inmateWithLostInterests.Interests.Remove(interest);
+            return Ok(inmateWithLostInterests.Interests);
+        }
+
         [HttpGet("{id}/friends")]
         public IActionResult InmatesFriends(int id)
         {
