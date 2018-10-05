@@ -46,7 +46,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
         }
 
         [HttpPut("{id}/newservice")]
-        public IActionResult addNewService(int id, Service service)
+        public IActionResult AddNewService(int id, Service service)
         {
 
             var clink = new TheClink();
