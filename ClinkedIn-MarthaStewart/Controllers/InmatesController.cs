@@ -84,11 +84,10 @@ namespace ClinkedIn_MarthaStewart.Controllers
         public IActionResult FriendsOfFriends(int id)
         {
             var clink = new TheClink();
-            var self = clink.GetAllInmates().FirstOrDefault(inmate => inmate.Id == id);
-            if (self == null)
-            {
-                return NotFound();
-            }
+            var self = clink.GetById(id);
+
+            if (self == null) return NotFound();
+            
             var suggestions = self
                 .Friends
                 .SelectMany(friend => friend.Friends)
