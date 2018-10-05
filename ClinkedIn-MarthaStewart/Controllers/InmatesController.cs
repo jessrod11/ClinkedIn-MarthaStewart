@@ -172,7 +172,6 @@ namespace ClinkedIn_MarthaStewart.Controllers
             {
                 return BadRequest("Buyer cannot afford this service.");
             }
-            IList<Transaction>
         }
     }
 
