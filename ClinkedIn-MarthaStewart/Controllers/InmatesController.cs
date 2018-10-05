@@ -81,7 +81,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
         }
 
         [HttpGet("{id}/suggested")]
-        public IActionResult FriendsOfFriends (int id)
+        public IActionResult FriendsOfFriends(int id)
         {
             var clink = new TheClink();
             var self = clink.GetAllInmates().FirstOrDefault(inmate => inmate.Id == id);
@@ -107,7 +107,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
 
 
         [HttpPost]
-        public IActionResult AddNewInmate (Inmate newInmate)
+        public IActionResult AddNewInmate(Inmate newInmate)
         {
             var clink = new TheClink();
             var inmateList = clink.GetAllInmates();
@@ -116,5 +116,16 @@ namespace ClinkedIn_MarthaStewart.Controllers
             return Ok(newInmate.Id);
         }
 
+        [HttpGet("{id}/sentence")]
+        public IActionResult InmateReleaseDates(int id)
+        {
+            var clink = new TheClink();
+            var inmateById = clink.GetById(id);
+            var inmateTimeLeft = inmateById.ReleaseDate - DateTime.Now;
+            var Days = inmateTimeLeft.Days;
+            return Ok(Days);
+        }
+
     }
-}
+
+    }
