@@ -152,6 +152,8 @@ namespace ClinkedIn_MarthaStewart.Controllers
         [HttpPost("services/transactions")]
         public IActionResult ServiceTransaction(Transaction details)
         {
+            if (details.RequestedService == null || details.RequestedService == string.Empty) return BadRequest("No search term provided");
+            if (details.Buyer == details.Seller) return BadRequest("Buyer and seller cannot match");
             var clink = new TheClink();
             var buyer = clink.GetById(details.Buyer);
 
@@ -170,7 +172,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
             }
             else
             {
-                return BadRequest("Buyer cannot afford this service.");
+                return Ok("Buyer cannot afford this service.  No transaction performed.");
             }
         }
     }
