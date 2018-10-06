@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using ClinkedIn_MarthaStewart.Clink;
 using ClinkedIn_MarthaStewart.Models;
@@ -136,7 +137,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
             var inmateList = clink.GetAllInmates();
             newInmate.Id = inmateList.Any() ? inmateList.Max(thisGuy => thisGuy.Id) + 1 : 1;
             clink.Add(newInmate);
-            return Ok(newInmate.Id);
+            return Ok(new { newInmate.Id });
         }
 
         [HttpGet("{id}/sentence")]
@@ -149,6 +150,32 @@ namespace ClinkedIn_MarthaStewart.Controllers
             return Ok(Days);
         }
 
+        [HttpPost("services/transactions")]
+        public IActionResult ServiceTransaction(TransactionRequest details)
+        {
+            if (details.RequestedService == null || details.RequestedService == string.Empty) return BadRequest("No search term provided");
+            if (details.Buyer == details.Seller) return BadRequest("Buyer and seller cannot match");
+            var clink = new TheClink();
+            var buyer = clink.GetById(details.Buyer);
+
+            var seller = clink.GetById(details.Seller);
+            if (buyer == null) return NotFound($"No inmate with ID {details.Buyer}");
+            if (seller == null) return NotFound($"No inmate with ID {details.Seller}");
+
+            var serviceRequested = seller.Services.FirstOrDefault(service => service.Name.ToLower().Contains(details.RequestedService.ToLower()));
+            if (serviceRequested == null) return NotFound($"Inmate {details.Seller} has no service matching \"{details.RequestedService}\"");
+
+            if (buyer.Funds >= serviceRequested.Price)
+            {
+                buyer.Funds -= serviceRequested.Price;
+                seller.Funds += serviceRequested.Price;
+                return Ok(new TransactionResponse(buyer.Name, seller.Name, serviceRequested.Name, buyer.Funds));
+            }
+            else
+            {
+                return StatusCode(403, "Buyer cannot afford this service.  No transaction performed.");
+            }
+        }
     }
 
     }
