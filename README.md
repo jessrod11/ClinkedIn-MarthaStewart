@@ -22,7 +22,7 @@ You'll be building this in teams, and we're only concerned with building the API
 - [x] As a ClinkedIn member, I can patronize the services of another member if I can afford them.
 
 #### Contributors
-[John Anchor](https://github.com/johnachor)
+[John Achor](https://github.com/johnachor)
 
 [Michael Clark](https://github.com/michaelclark2)
 
