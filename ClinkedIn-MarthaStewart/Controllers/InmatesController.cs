@@ -15,19 +15,19 @@ namespace ClinkedIn_MarthaStewart.Controllers
     [ApiController]
     public class InmatesController : ControllerBase
     {
+        TheClink clink = new TheClink();
+
         //Methods
         [HttpGet]
         public ActionResult<IEnumerable<Inmate>> GetAll()
         {
-            var clink = new TheClink();
             var allInmates = clink.GetAllInmates();
-            return Ok(allInmates);
+            return Ok(allInmates.Select(inmate => inmate.Condense()));
         }
 
-        [HttpGet("{interest}")]
+        [HttpGet("interest/{interest}")]
         public ActionResult<IEnumerable<Inmate>> GetInmatesByInterest(string interest)
         {
-            var clink = new TheClink();
             var inmatesByInterest = clink.GetAllInmates().Where(inmate => inmate.Interests.Any(i => interest.ToLower() == i.ToLower()));
             return Ok(inmatesByInterest);
         }
@@ -36,8 +36,6 @@ namespace ClinkedIn_MarthaStewart.Controllers
         [HttpGet("{id}/services")]
         public IActionResult InmateServeUs(int id)
         {
-            // instatiating a new class
-            var clink = new TheClink();
 
             // setting a variable to the method in the class to get an inmate by id
             var inmateService = clink.GetById(id);
@@ -50,7 +48,6 @@ namespace ClinkedIn_MarthaStewart.Controllers
         public IActionResult AddNewService(int id, Service service)
         {
 
-            var clink = new TheClink();
             var inmateToAddServiceTo = clink.GetById(id);
 
             if (inmateToAddServiceTo == null) return NotFound();
@@ -62,7 +59,6 @@ namespace ClinkedIn_MarthaStewart.Controllers
         [HttpDelete("{id}/deleteservice")]
         public IActionResult DeleteService(int id, Service service)
         {
-            var clink = new TheClink();
             var inmateToHaveServiceDeleted = clink.GetById(id);
 
             if (inmateToHaveServiceDeleted == null) return NotFound();
@@ -76,7 +72,6 @@ namespace ClinkedIn_MarthaStewart.Controllers
         [HttpPut("{id}/newinterest/{interest}")]
         public IActionResult AddNewInterest(int id, string interest)
         {
-            var clink = new TheClink();
             var inmateWithInterests = clink.GetById(id);
 
             if (inmateWithInterests == null) return NotFound();
@@ -85,10 +80,9 @@ namespace ClinkedIn_MarthaStewart.Controllers
             return Ok(inmateWithInterests.Interests);
         }
 
-        [HttpDelete("{id}/newinterest/{interest}")]
+        [HttpDelete("{id}/deleteinterest/{interest}")]
         public IActionResult DeleteInterest(int id, string interest)
         {
-            var clink = new TheClink();
             var inmateWithLostInterests = clink.GetById(id);
 
             if (inmateWithLostInterests == null) return NotFound();
@@ -100,7 +94,6 @@ namespace ClinkedIn_MarthaStewart.Controllers
         [HttpGet("{id}/friends")]
         public IActionResult InmatesFriends(int id)
         {
-            var clink = new TheClink();
             var inmatesAmigos = clink.GetById(id);
             return Ok(inmatesAmigos.Friends);
         }
@@ -108,7 +101,6 @@ namespace ClinkedIn_MarthaStewart.Controllers
         [HttpGet("{id}/suggested")]
         public IActionResult FriendsOfFriends(int id)
         {
-            var clink = new TheClink();
             var self = clink.GetById(id);
 
             if (self == null) return NotFound();
@@ -118,13 +110,13 @@ namespace ClinkedIn_MarthaStewart.Controllers
                 .SelectMany(friend => friend.Friends)
                 .Where(inmate => inmate != self && !self.Friends.Contains(inmate))
                 .ToHashSet();
-            return Ok(suggestions);
+
+            return Ok(suggestions.Select(inmate => inmate.Condense()));
         }
 
         [HttpGet("{id}/enemies")]
         public IActionResult InmatesEnemies(int id)
         {
-            var clink = new TheClink();
             var inmatesEnemigos = clink.GetById(id);
             return Ok(inmatesEnemigos.Enemies);
         }
@@ -133,7 +125,6 @@ namespace ClinkedIn_MarthaStewart.Controllers
         [HttpPost]
         public IActionResult AddNewInmate(Inmate newInmate)
         {
-            var clink = new TheClink();
             var inmateList = clink.GetAllInmates();
             newInmate.Id = inmateList.Any() ? inmateList.Max(thisGuy => thisGuy.Id) + 1 : 1;
             clink.Add(newInmate);
@@ -143,7 +134,6 @@ namespace ClinkedIn_MarthaStewart.Controllers
         [HttpGet("{id}/sentence")]
         public IActionResult InmateReleaseDates(int id)
         {
-            var clink = new TheClink();
             var inmateById = clink.GetById(id);
             var inmateTimeLeft = inmateById.ReleaseDate - DateTime.Now;
             var Days = inmateTimeLeft.Days;
@@ -155,7 +145,6 @@ namespace ClinkedIn_MarthaStewart.Controllers
         {
             if (details.RequestedService == null || details.RequestedService == string.Empty) return BadRequest("No search term provided");
             if (details.Buyer == details.Seller) return BadRequest("Buyer and seller cannot match");
-            var clink = new TheClink();
             var buyer = clink.GetById(details.Buyer);
 
             var seller = clink.GetById(details.Seller);
