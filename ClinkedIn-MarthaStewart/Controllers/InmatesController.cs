@@ -151,7 +151,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
         }
 
         [HttpPost("services/transactions")]
-        public IActionResult ServiceTransaction(Transaction details)
+        public IActionResult ServiceTransaction(TransactionRequest details)
         {
             if (details.RequestedService == null || details.RequestedService == string.Empty) return BadRequest("No search term provided");
             if (details.Buyer == details.Seller) return BadRequest("Buyer and seller cannot match");
@@ -169,7 +169,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
             {
                 buyer.Funds -= serviceRequested.Price;
                 seller.Funds += serviceRequested.Price;
-                return Ok(new { buyer.Funds });
+                return Ok(new TransactionResponse(buyer.Name, seller.Name, serviceRequested.Name, buyer.Funds));
             }
             else
             {
