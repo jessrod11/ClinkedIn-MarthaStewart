@@ -139,6 +139,18 @@ namespace ClinkedIn_MarthaStewart.Clink
             wormy.Enemies.Add(stabs);
             wormy.Enemies.Add(crazyEyes);
 
+            pablo.Friends.Add(crazyEyes);
+            pablo.Friends.Add(wormy);
+            pablo.Enemies.Add(nico);
+            pablo.Enemies.Add(scarface);
+            pablo.Enemies.Add(stabs);
+
+            scarface.Friends.Add(nico);
+            scarface.Friends.Add(crazyEyes);
+            scarface.Enemies.Add(wormy);
+            scarface.Enemies.Add(stabs);
+            scarface.Enemies.Add(pablo);
+
             _theClink.AddRange(new List<Inmate> { nico, stabs, crazyEyes, wormy, scarface, pablo });
 
         }
