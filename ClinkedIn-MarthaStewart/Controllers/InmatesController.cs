@@ -29,7 +29,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
         {
             var clink = new TheClink();
             var inmatesByInterest = clink.GetAllInmates().Where(inmate => inmate.Interests.Any(i => interest.ToLower() == i.ToLower()));
-            return Ok(inmatesByInterest);
+            return Ok(inmatesByInterest.Select(i => i.Condense()));
         }
 
 
@@ -102,7 +102,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
         {
             var clink = new TheClink();
             var inmatesAmigos = clink.GetById(id);
-            return Ok(inmatesAmigos.Friends);
+            return Ok(inmatesAmigos.Friends.Select(i => i.Condense()));
         }
 
         [HttpGet("{id}/suggested")]
@@ -126,7 +126,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
         {
             var clink = new TheClink();
             var inmatesEnemigos = clink.GetById(id);
-            return Ok(inmatesEnemigos.Enemies);
+            return Ok(inmatesEnemigos.Enemies.Select(i => i.Condense()));
         }
 
 
