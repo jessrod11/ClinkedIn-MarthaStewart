@@ -22,7 +22,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
         public ActionResult<IEnumerable<Inmate>> GetAll()
         {
             var allInmates = clink.GetAllInmates();
-            return Ok(allInmates);
+            return Ok(allInmates.Select(inmate => inmate.Condense()));
         }
 
         [HttpGet("interest/{interest}")]
@@ -80,7 +80,7 @@ namespace ClinkedIn_MarthaStewart.Controllers
             return Ok(inmateWithInterests.Interests);
         }
 
-        [HttpDelete("{id}/newinterest/{interest}")]
+        [HttpDelete("{id}/deleteinterest/{interest}")]
         public IActionResult DeleteInterest(int id, string interest)
         {
             var inmateWithLostInterests = clink.GetById(id);
@@ -110,7 +110,8 @@ namespace ClinkedIn_MarthaStewart.Controllers
                 .SelectMany(friend => friend.Friends)
                 .Where(inmate => inmate != self && !self.Friends.Contains(inmate))
                 .ToHashSet();
-            return Ok(suggestions);
+
+            return Ok(suggestions.Select(inmate => inmate.Condense()));
         }
 
         [HttpGet("{id}/enemies")]

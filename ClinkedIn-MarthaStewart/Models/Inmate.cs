@@ -19,5 +19,23 @@ namespace ClinkedIn_MarthaStewart.Models
         public List<string> Interests { get; set; } = new List<string>();
         public List<Inmate> Friends { get; set; } = new List<Inmate>();
         public List<Inmate> Enemies { get; set; } = new List<Inmate>();
+
+        public object Condense()
+        {
+            return new
+            {
+                this.Id,
+                this.Name,
+                this.Gender,
+                this.Age,
+                this.Crime,
+                this.ReleaseDate,
+                this.Services,
+                this.Interests,
+                this.Funds,
+                friends = this.Friends.Select(f => f.Name),
+                enemies = this.Enemies.Select(e => e.Name)
+            };
+        }
     }
 }
